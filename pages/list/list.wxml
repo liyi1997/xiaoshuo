@@ -1,0 +1,14 @@
+<!-- pages/list/list.wxml -->
+<text style="padding:0 20rpx;">{{name}}</text>
+<view class="box_books">
+    <navigator class="books" url="../details/details?id={{item._id}}" wx:for="{{list.books}}" wx:key="index">
+        <view>
+            <image class="cover" src="http://statics.zhuishushenqi.com{{item.cover}}" binderror="" bindload=""></image>
+        </view>
+        <view class="books_des">
+            <text>{{item.title}}</text>
+            <text class="shortIntro">{{item.shortIntro}}</text>
+            <text>{{item.author}}</text>
+        </view>
+    </navigator>
+</view>

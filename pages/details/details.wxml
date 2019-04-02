@@ -1,0 +1,19 @@
+<!-- pages/details/details.wxml -->
+<view class="box">
+    <image class="img" src="http://statics.zhuishushenqi.com{{details.cover}}"></image>
+    <view style="margin-top:20rpx;">
+        <text>作者：{{details.author}}</text>
+    </view>
+    <view style="margin-top:20rpx;">
+        <text>类别：{{details.majorCate}}</text>
+    </view>
+</view>
+<view class="des">
+    <text>简介：{{details.longIntro}}</text>
+</view>
+<view style="margin-top:20rpx;">
+    <text style="color:red">选择书籍源开始阅读吧：</text>
+    <view wx:for="{{source}}" key="index">
+        <navigator url="../chapter/chapter?id={{item._id}}">{{item.name}}</navigator>
+    </view>
+</view>

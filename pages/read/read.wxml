@@ -1,0 +1,7 @@
+<!-- pages/read/read.wxml -->
+<view style="padding:30rpx;">
+    <view>
+        <text class="title">{{read.title}}</text>
+    </view>
+    <text>{{read.cpContent?read.cpContent:read.body}}</text>
+</view>

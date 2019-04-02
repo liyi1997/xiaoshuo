@@ -1,0 +1,7 @@
+<!-- pages/classify/classify.wxml -->
+<view class="classify_box">
+    <navigator url="../list/list?name={{item.name}}" class="box" wx:for="{{male}}" wx:key="index">
+        <text>{{item.name}}：</text>
+        <text class="num">{{item.bookCount}}本</text>
+    </navigator>
+</view>

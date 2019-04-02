@@ -1,0 +1,19 @@
+<!-- pages/home/home.wxml -->
+<view>
+    <view class="search_view">
+        <input class="search" bindconfirm="bindconfirm" confirm-type="search" bindinput="bindinput" value="{{value}}" type="text" placeholder="输入书籍名称"></input>
+    </view>
+    <text class="top_100">TOP 100</text>
+    <view class="box_books">
+        <navigator class="books" url="../details/details?id={{item._id}}" wx:for="{{ranking.books}}" wx:key="index">
+            <view>
+                <image class="cover" src="http://statics.zhuishushenqi.com{{item.cover}}" binderror="" bindload=""></image>
+            </view>
+            <view class="books_des">
+                <text>{{item.title}}</text>
+                <text class="shortIntro">{{item.shortIntro}}</text>
+                <text>{{item.author}}</text>
+            </view>
+        </navigator>
+    </view>
+</view>

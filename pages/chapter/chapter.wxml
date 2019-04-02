@@ -1,0 +1,4 @@
+<!-- pages/chapter/chapter.wxml -->
+<navigator bindtap="goes" url="../read/read?order={{item.order}}" data-pLink="{{index==0?'':chapter.chapters[index-1].link}}" data-nLink="{{index==chapter.chapters.length-1?'':chapter.chapters[index+1].link}}" data-link="{{item.link}}" wx:for="{{chapter.chapters}}">
+    <text>{{item.title}}</text>
+</navigator>

@@ -1,0 +1,26 @@
+/* pages/details/details.wxss */
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.img {
+    height: 600rpx;
+    width: 420rpx;
+}
+
+.des {
+    padding: 0 20rpx;
+    margin-top: 20rpx;
+}
+
+navigator {
+    height: 100rpx;
+    width: 750rpx;
+    line-height: 100rpx;
+    background-color: #ff5809;
+    text-align: center;
+    margin-top: 30rpx;
+}

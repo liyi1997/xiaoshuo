@@ -1,0 +1,16 @@
+<!-- pages/search/search.wxml -->
+<view class="box_books">
+    <navigator wx:if="{{searchData.books.length>0}}" class="books" url="../details/details?id={{item._id}}" wx:for="{{searchData.books}}" wx:key="index">
+        <view>
+            <image class="cover" src="http://statics.zhuishushenqi.com{{item.cover}}" binderror="" bindload=""></image>
+        </view>
+        <view class="books_des">
+            <text>{{item.title}}</text>
+            <text class="shortIntro">{{item.shortIntro}}</text>
+            <text>{{item.author}}</text>
+        </view>
+    </navigator>
+    <view wx:if="{{searchData.books.length==0}}" class="des">
+        <text style="color:red">没有你要搜索的书籍!</text>
+    </view>
+</view>

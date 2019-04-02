@@ -1,0 +1,33 @@
+/* pages/list/list.wxss */
+.cover {
+    width: 140rpx;
+    height: 200rpx;
+}
+
+.box_books {
+    padding: 0 20rpx;
+}
+
+.books {
+    display: flex;
+    margin-top: 20rpx;
+}
+
+.books_des {
+    margin-left: 40rpx;
+    display: flex;
+    flex-direction: column;
+}
+
+.books_des>text {
+    font-size: 34rpx;
+}
+
+.shortIntro {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    margin-top: 10rpx;
+    margin-bottom: 10rpx;
+}

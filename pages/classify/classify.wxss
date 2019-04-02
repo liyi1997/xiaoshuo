@@ -1,0 +1,21 @@
+/* pages/classify/classify.wxss */
+.classify_box {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20rpx;
+    flex-wrap: wrap;
+}
+
+.box {
+    text-align: center;
+    padding: 30rpx;
+    border-radius: 40rpx;
+    box-shadow: 0 3rpx 5rpx 1rpx rgba(255, 177, 42, 0.5);
+    -webkit-box-shadow: 0px 3px 5px 1px rgba(255, 177, 42, 0.5);
+    margin-top: 30rpx;
+    width:260rpx;
+}
+.num{
+    font-size: 30rpx;
+    color: aqua
+}

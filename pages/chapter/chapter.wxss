@@ -1,0 +1,10 @@
+/* pages/chapter/chapter.wxss */
+navigator{
+    width: 750rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    margin-top: 20rpx;
+    text-align: center;
+    border-radius: 40rpx;
+    background-color: #eee;
+}
