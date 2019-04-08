@@ -3,3 +3,18 @@
     margin-bottom: 10rpx;
     font-weight: bolder;
 }
+.bottom_set{
+    position: fixed;
+    background-color: #eeeeee;
+    padding: 20rpx 0;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-around;
+}
+.set{
+    font-size: 30rpx;
+    flex-grow: 1;
+    text-align: center; 
+}

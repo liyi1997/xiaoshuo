@@ -1,7 +1,14 @@
 <!-- pages/read/read.wxml -->
-<view style="padding:30rpx;">
-    <view>
-        <text class="title">{{read.title}}</text>
+<view style="padding:30rpx;position: relative;">
+    <view bindtap="showSet" style="padding-bottom:320rpx;">
+        <view>
+            <text class="title">{{read.title}}</text>
+        </view>
+        <text bind:touchend="handletouchend" bind:touchmove="handletouchmove" style="font-size:{{font}};line-height:{{height}}">{{read.cpContent?read.cpContent:read.body}}</text>
     </view>
-    <text>{{read.cpContent?read.cpContent:read.body}}</text>
+    <view class="bottom_set" wx:if="{{showSet}}">
+        <view class="set" bindtap="source">换源</view>
+        <view class="set" bindtap="set_font">字体大小</view>
+        <view class="set" bindtap="line_height">字体间距</view>
+    </view>
 </view>

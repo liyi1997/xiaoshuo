@@ -9,6 +9,9 @@ Page({
     read: {},
     order: null,
     isOnPull: true,
+    showSet: false,
+    font:"32rpx",
+    height:"32rpx"
   },
 
   /**
@@ -27,7 +30,6 @@ Page({
         'Content-Type': 'application/json'
       },
       success: (res) => {
-        console.log(res.data)
         this.setData({
           read: res.data.chapter,
           order
@@ -36,7 +38,104 @@ Page({
       }
     })
   },
+  showSet() {
+    this.setData({
+      showSet: true
+    })
+  },
+  source() {
+    let that = this
+    wx.getStorage({
+      key: 'source',
+      success: res => {
+        let arr = []
+        for (let i = 0; i < res.data.length; i++) {
+          if (arr.length < 6) {
+            arr.push(res.data[i].name)
+          }
+        }
+        wx.showActionSheet({
+          itemList: arr,
+          success(suc) {
+            wx.showLoading({
+              title: "加载中",
+              mask: true,
+            });
+            wx.request({
+              url: `https://novel.juhe.im/book-chapters/${res.data[suc.tapIndex]._id}`,
+              header: {
+                'Content-Type': 'application/json'
+              },
+              success: (res) => {
+                for (let i = 0; i < res.data.chapters.length; i++) {
+                  res.data.chapters[i].order = i + 1
+                }
+                wx.setStorage({
+                  key: 'chapter',
+                  data: res.data.chapters
+                })
+                wx.request({
+                  url: `https://novel.juhe.im/chapters/${encodeURIComponent(res.data.chapters[that.data.order - 1].link)}`,
+                  header: {
+                    'Content-Type': 'application/json'
+                  },
+                  success: res => {
+                    that.setData({
+                      read: res.data.chapter,
+                      isOnPull: true
+                    })
+                    wx.hideLoading();
+                  }
+                })
+              }
+            })
+          },
+          fail(err) {
+            console.log(err.errMsg)
+          }
+        })
+      }
+    })
 
+  },
+
+  set_font() {
+    let setArr=['32rpx','40rpx','48rpx','56rpx']
+    let that=this;
+    wx.showActionSheet({
+      itemList: setArr,
+      success(suc) {
+        that.setData({
+          font:setArr[suc.tapIndex]
+        })
+      },
+      fail(err) {
+        console.log(err.errMsg)
+      }
+    })
+  },
+
+  line_height(){
+    let setArr=['32rpx','64rpx','80rpx','96rpx','112rpx']
+    let that=this;
+    wx.showActionSheet({
+      itemList: setArr,
+      success(suc) {
+        that.setData({
+          height:setArr[suc.tapIndex]
+        })
+      },
+      fail(err) {
+        console.log(err.errMsg)
+      }
+    })
+  },
+  handletouchmove(){
+    console.log("yd")
+    this.setData({
+      showSet:false
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -71,7 +170,7 @@ Page({
   onPullDownRefresh: function () {
     if (this.data.isOnPull) {
       this.setData({
-        isOnPull:false
+        isOnPull: false
       })
       let index = this.data.order
       let that = this;
@@ -93,7 +192,7 @@ Page({
               console.log(res.data)
               that.setData({
                 read: res.data.chapter,
-                isOnPull:true
+                isOnPull: true
               })
               wx.hideLoading();
               wx.stopPullDownRefresh();

@@ -39,6 +39,10 @@ Page({
         this.setData({
           source: res.data
         })
+        wx.setStorage({
+          key: 'source',
+          data: res.data
+        })
         wx.hideLoading();
       }
     })
